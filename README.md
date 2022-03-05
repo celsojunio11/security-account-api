@@ -11,8 +11,6 @@
 <br/>
 
 ### POST /v1/users 
-<br/>
-
 #### Request
 
 ```json
