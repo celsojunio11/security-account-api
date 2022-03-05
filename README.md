@@ -168,7 +168,7 @@
 ## Endpoint listar conta
 - Este endpoint depende do cabeçalho `client-id` e `bearer-token`;
 
-### GET /v1/accounts/{accountId}
+### GET /v1/accounts/{accountNumber}
 
 #### Response
 ```json
