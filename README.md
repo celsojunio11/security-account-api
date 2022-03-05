@@ -2,38 +2,37 @@
 
 ## Endpoint criação de usuário 
 
-- Deve ser gerado automaticamente um client-id que será usado para posteriormente 
+- Deve ser gerado automaticamente um `client-id` que será usado para posteriormente 
      identificar quem está solicitando a criação de conta;
 - Deve ocorrer uma validação de senha pois deve possui `caracteres e números`;
 - Deve ocorrer troca de senha periódica `(15 dias)` e `talvez` avisar por e-mail quando ocorrer a troca de senha;
 - Deve possuir histórico de senha para não permitir a senha seja igual às anteriores. 
 
-<br/>
-
 ### POST /v1/users 
-#### Request
 
+#### Request
 ```json
      {
         "user": "string",
-        "password": "string"
+        "password": "string",
+        "nameClient": "string"
      }
 ```
 
 #### Response
-
 ```json
      {
+        "nameClient": "string",
         "clientId": "uuid",
         "user": "string",
         "password": "string"
      }
 ```
 #### BD
-
 ```json
      {
         "clientId": "uuid",
+        "nameClient": "string",
         "user": "string",
         "password": "string",
         "createdAt": "localDate.now()",
@@ -47,47 +46,39 @@
 
 - Este endpoint depende do cabeçalho `client-id` para identificar qual cliente está enviando a requisição;
 - Deve ocorrer uma validação de usuário e senha;
-    - Verificar a validade da senha, caso esteja próximo do vencimento `D+2` avisar ao usuário;
+    - Verificar a validade da senha, caso esteja próximo do vencimento `D+2` retornar uma mensagem avisando o usuário;
     - Caso esteja vencida `D+1` não permitir que o usuário realize autenticação.
-- Token gerado deve ter validade de `1 minuto`.
-
-<br/>
+- Token gerado deve ter validade de `1 minuto`;
+- Campo `message` deve retornar informação `updatedAt` do banco de dados;
 
 ### POST /v1/auth/{clientId}
-<br/>
 
 #### Request
-
 ```json
      {
         "user": "string",
-        "password": "string",
-        "dueDate": "localDate"
+        "password": "string"
      }
 ```
 #### Response
-
 ```json
      {
-        "bearer-token": "string"
+        "bearerToken": "string",
+        "message": "string"
      }
 ```
+<br/>
 
 ## Endpoint de alteração de senha
 
 - Este endpoint depende do cabeçalho `client-id` e `bearer-token`;
-- Campo `dueDate` deve retornar informação `updatedAt` do banco de dados;
 - Deve ocorrer validação do nova senha de `caracteres e números`
     - Deve verificar se nova senha não é igual a senhas anteriores;
     - Deve atualizar o campo `updatedAt` com a data atual para controle das próximas alterações.
 
-<br/>
-
-### PATCH /v1/users/{clientId}
-<br/>
+### PATCH /v1/users
 
 #### Request
-
 ```json
      {
         "user": "string",
@@ -104,11 +95,8 @@
 - Valor da conta deve ser iniciado com zero, status `ATIVA`, limites deve ser de acordo com cada cliente;
 - Conta pode ter os seguintes status: `[ATIVA, CANCELADA, BLOQUEADA]`;
 - Deve ser gerado um numero para `accountId` lembrando que o mesmo não pode repetir.
-<br/>
 
 ### POST /v1/accounts
-<br/>
-
 
 #### Request
 ```json
@@ -129,8 +117,6 @@
      }
 ```
 
-<br/>
-
 #### Response
 ```json
      {
@@ -149,7 +135,6 @@
 ```
 
 #### BD
-
 ```json
      {
         "accountId": "uuid",
@@ -182,10 +167,8 @@
 
 ## Endpoint listar conta
 - Este endpoint depende do cabeçalho `client-id` e `bearer-token`;
-<br/>
 
 ### GET /v1/accounts/{accountId}
-<br/>
 
 #### Response
 ```json
