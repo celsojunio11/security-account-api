@@ -206,9 +206,7 @@
 ## Arquitetura
 <br/>
 
-![SecurityAccount](https://user-images.githubusercontent.com/31020103/156883695-09b26b69-a708-4147-a659-aa1098893e36.png)
-
-<br/>
+![SecurityAccount](https://user-images.githubusercontent.com/31020103/156922196-b302de3c-3962-4c14-8972-7e9382c9c41c.png)
 
 #### Principais bibiliotecas utilizadas
 
