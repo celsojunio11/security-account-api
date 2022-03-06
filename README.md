@@ -1,12 +1,11 @@
 # security-account-api
 
 ## Endpoint criação de usuário 
+- Deve-se gerar automaticamente o `client-id` que será usado posteriormente para identificar  quem está solicitando a criação de conta;
+- Deve-se ocorrer validação de senha pois obrigatoriamente possuirá `caracteres e números`;
+- Deve-se ocorrer a troca de senha periódica `(15 dias)`, e `talvez` avisar por e-mail quando esta troca ocorrer;
+- Deve-se possuir um histórico de senha para que não se permita senhas iguais às anteriores. 
 
-- Deve ser gerado automaticamente um `client-id` que será usado para posteriormente 
-     identificar quem está solicitando a criação de conta;
-- Deve ocorrer uma validação de senha pois deve possui `caracteres e números`;
-- Deve ocorrer troca de senha periódica `(15 dias)` e `talvez` avisar por e-mail quando ocorrer a troca de senha;
-- Deve possuir histórico de senha para não permitir a senha seja igual às anteriores. 
 
 ### POST /v1/users 
 
@@ -43,13 +42,13 @@
 <br/>
 
 ## Endpoint de autenticação 
+- Este endpoint depende do cabeçalho `client-id` para identificar quem está enviando a requisição;
+- Ocorrerá uma validação de usuário e senha;
+     - Verificação de validade da senha, e caso esteja próxima do vencimento `D+2`, deve-se retornar uma mensagem informativa ao usuário;
+     - Caso esteja vencida `D+1`, não permitir que o usuário realize autenticação.
+- Token gerado terá validade de `1 minuto`;
+- Campo `message` retornará informação `updatedAt` do banco de dados.
 
-- Este endpoint depende do cabeçalho `client-id` para identificar qual cliente está enviando a requisição;
-- Deve ocorrer uma validação de usuário e senha;
-    - Verificar a validade da senha, caso esteja próximo do vencimento `D+2` retornar uma mensagem avisando o usuário;
-    - Caso esteja vencida `D+1` não permitir que o usuário realize autenticação.
-- Token gerado deve ter validade de `1 minuto`;
-- Campo `message` deve retornar informação `updatedAt` do banco de dados;
 
 ### POST /v1/auth/{clientId}
 
@@ -70,11 +69,10 @@
 <br/>
 
 ## Endpoint de alteração de senha
-
 - Este endpoint depende do cabeçalho `client-id` e `bearer-token`;
-- Deve ocorrer validação do nova senha de `caracteres e números`
-    - Deve verificar se nova senha não é igual a senhas anteriores;
-    - Deve atualizar o campo `updatedAt` com a data atual para controle das próximas alterações.
+- Ocorrerá a validação da nova senha composta por `caracteres e números`
+    - Verifica se a nova senha não é condizente a senhas anteriores;
+    - Atualização do campo `updatedAt` com a data atual a fins de controlar próximas alterações.
 
 ### PATCH /v1/users
 
@@ -91,10 +89,11 @@
 
 ## Endpoint criação de conta
 - Este endpoint depende do cabeçalho `client-id` e `bearer-token`;
-- Deve ocorrer uma validação permitindo apenas uma conta por `document-number`;
-- Valor da conta deve ser iniciado com zero, status `ATIVA`, limites deve ser de acordo com cada cliente;
-- Conta pode ter os seguintes status: `[ATIVA, CANCELADA, BLOQUEADA]`;
-- Deve ser gerado um numero para `accountId` lembrando que o mesmo não pode repetir.
+- Ocorre-se a validação permitindo apenas uma conta por `document-number`;
+- O valor da conta inicializará com zero, status `ATIVA`, e limites deverão ser de acordo a cada cliente;
+- A conta há possibilidade de ter os seguintes status: `[ATIVA, CANCELADA, BLOQUEADA]`;
+- Será gerado um número para `accountId`, e este não poderá repetir.
+
 
 ### POST /v1/accounts
 
@@ -197,10 +196,10 @@
 ```
 
 ## Regras da aplicação
-- Toda aplicação deve possui logs com o padrão `[Class] - Text]`;
+- Toda aplicação possuirá logs com o padrão `[Class] - Text]`;
 - Cobertura de testes unitários em 50%;
 - Tratamento de exceções em casos de erros;
-- Deve ser realizado estudos e aplicação de backup do banco de dados;
+- Deve-se realizar estudos e aplicações de backups ao banco de dados.
 
 <br/>
 
