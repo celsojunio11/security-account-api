@@ -22,7 +22,7 @@
 ```json
      {
         "nameClient": "string",
-        "clientId": "uuid",
+        "clientId": "string",
         "user": "string",
         "password": "string"
      }
@@ -30,7 +30,7 @@
 #### BD
 ```json
      {
-        "clientId": "uuid",
+        "clientId": "string",
         "nameClient": "string",
         "user": "string",
         "password": "string",
@@ -101,7 +101,7 @@
 ```json
      {
         "name": "string",
-        "document_number": "string",
+        "documentNumber": "string",
         "email": "string",
         "phone": "string",
         "address": {
@@ -121,7 +121,7 @@
      {
         "accountId": "string",
         "name": "string",
-        "document_number": "string",
+        "documentNumber": "string",
         "email": "string",
         "status": "ATIVA",
         "amount": 0.0,
@@ -136,10 +136,10 @@
 #### BD
 ```json
      {
-        "accountId": "uuid",
+        "accountId": "string",
         "accountNumber": "string",
         "name": "string",
-        "document_number": "string",
+        "documentNumber": "string",
         "email": "string",
         "address": {
             "street": "string",
@@ -174,7 +174,7 @@
      {
         "accountNumber": "string",
         "name": "string",
-        "document_number": "string",
+        "documentNumber": "string",
         "email": "string",
         "address": {
             "street": "string",
@@ -206,9 +206,7 @@
 ## Arquitetura
 <br/>
 
-![SecurityAccount](https://user-images.githubusercontent.com/31020103/156883695-09b26b69-a708-4147-a659-aa1098893e36.png)
-
-<br/>
+![SecurityAccount](https://user-images.githubusercontent.com/31020103/156922196-b302de3c-3962-4c14-8972-7e9382c9c41c.png)
 
 #### Principais bibiliotecas utilizadas
 
