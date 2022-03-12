@@ -1,12 +1,14 @@
 package com.security.account.config;
 
 import com.security.account.exceptions.ExceptionResponse;
+import com.security.account.exceptions.PasswordExpiredException;
 import com.security.account.exceptions.UserExistException;
 import com.security.account.exceptions.UserNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -51,6 +53,22 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({UserNotFoundException.class})
     public @ResponseBody
     ExceptionResponse handlerBusinessRules(UserNotFoundException exception) {
+        log.info(exception.getMessage());
+        return new ExceptionResponse(env.getProperty(exception.getMessage()));
+    }
+
+    @ResponseStatus(NOT_FOUND)
+    @ExceptionHandler({BadCredentialsException.class})
+    public @ResponseBody
+    ExceptionResponse handlerBusinessRules(BadCredentialsException exception) {
+        log.info(exception.getMessage());
+        return new ExceptionResponse(env.getProperty(exception.getMessage()));
+    }
+
+    @ResponseStatus(GONE)
+    @ExceptionHandler({PasswordExpiredException.class})
+    public @ResponseBody
+    ExceptionResponse handlerBusinessRules(PasswordExpiredException exception) {
         log.info(exception.getMessage());
         return new ExceptionResponse(env.getProperty(exception.getMessage()));
     }

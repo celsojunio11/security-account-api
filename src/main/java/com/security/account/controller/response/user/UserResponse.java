@@ -17,6 +17,6 @@ public class UserResponse {
         return new UserResponse(
                 user.getClientId(),
                 user.getNameClient(),
-                user.getEmail());
+                user.getUsername());
     }
 }
