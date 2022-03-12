@@ -1,5 +1,7 @@
 package com.security.account.entity;
 
+import com.security.account.controller.request.user.UserRequest;
+import com.security.account.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,12 +9,15 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name="tb_user")
 public class User {
     @Id
     @Column(updatable = false, unique = true, nullable = false)
@@ -22,7 +27,7 @@ public class User {
     private String nameClient;
 
     @Column(unique = true, nullable = false)
-    private String user;
+    private String email;
 
     @Column(nullable = false)
     private String password;
@@ -32,4 +37,19 @@ public class User {
 
     @Column(nullable = false)
     private LocalDate updatedAt;
+
+    public static User create(
+            UserRequest request,
+            UserRepository repository
+    ) {
+        return repository.save(new User(
+                UUID.randomUUID().toString(),
+                request.getNameClient(),
+                request.getEmail(),
+                request.getPassword(),
+                LocalDate.now(),
+                LocalDate.now())
+        );
+    }
+
 }
