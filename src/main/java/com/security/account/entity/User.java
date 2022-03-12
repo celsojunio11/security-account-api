@@ -5,6 +5,7 @@ import com.security.account.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,7 +47,7 @@ public class User {
                 UUID.randomUUID().toString(),
                 request.getNameClient(),
                 request.getEmail(),
-                request.getPassword(),
+                new BCryptPasswordEncoder().encode(request.getPassword()),
                 LocalDate.now(),
                 LocalDate.now())
         );

@@ -41,7 +41,7 @@
 <br/>
 
 ## Endpoint de autenticação 
-- Este endpoint depende do cabeçalho `client-id` para identificar quem está enviando a requisição;
+- Este endpoint depende que seja enviando os seguintes atributos no cabeçalho `clientId` e `bearerToken`;
 - Ocorrerá uma validação de usuário e senha;
      - Verificação de validade da senha, e caso esteja próxima do vencimento `D+2`, deve-se retornar uma mensagem informativa ao usuário;
      - Caso esteja vencida `D+1`, não permitir que o usuário realize autenticação.
@@ -68,7 +68,7 @@
 <br/>
 
 ## Endpoint de alteração de senha
-- Este endpoint depende do cabeçalho `client-id` e `bearer-token`;
+- Este endpoint depende que seja enviando os seguintes atributos no cabeçalho `clientId` e `bearerToken`;
 - Ocorrerá a validação da nova senha composta por `caracteres e números`
     - Verifica se a nova senha não é condizente a senhas anteriores;
     - Atualização do campo `updatedAt` com a data atual a fins de controlar próximas alterações.
@@ -87,7 +87,7 @@
 <br/>
 
 ## Endpoint criação de conta
-- Este endpoint depende do cabeçalho `client-id` e `bearer-token`;
+- Este endpoint depende que seja enviando os seguintes atributos no cabeçalho `clientId` e `bearerToken`;
 - Ocorre-se a validação permitindo apenas uma conta por `document-number`;
 - O valor da conta inicializará com zero, status `ATIVA`, e limites deverão ser de acordo a cada cliente;
 - A conta há possibilidade de ter os seguintes status: `[ATIVA, CANCELADA, BLOQUEADA]`;
@@ -164,7 +164,7 @@
 <br/>
 
 ## Endpoint listar conta
-- Este endpoint depende do cabeçalho `client-id` e `bearer-token`;
+- Este endpoint depende que seja enviando os seguintes atributos no cabeçalho `clientId` e `bearerToken`;
 
 ### GET /v1/accounts/{accountNumber}
 
