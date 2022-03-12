@@ -12,7 +12,7 @@
 #### Request
 ```json
      {
-        "user": "string",
+        "email": "string",
         "password": "string",
         "nameClient": "string"
      }
@@ -21,10 +21,9 @@
 #### Response
 ```json
      {
-        "nameClient": "string",
         "clientId": "string",
-        "user": "string",
-        "password": "string"
+        "nameClient": "string",
+        "email": "string"
      }
 ```
 #### BD
@@ -32,7 +31,7 @@
      {
         "clientId": "string",
         "nameClient": "string",
-        "user": "string",
+        "email": "string",
         "password": "string",
         "createdAt": "localDate.now()",
         "updatedAt": "localDate.now()"
