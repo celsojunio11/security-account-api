@@ -16,8 +16,8 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
-import static com.security.account.config.AccountMessage.CREDENTIAL_INVALID;
-import static com.security.account.config.AccountMessage.PASSWORD_EXPIRED;
+import static com.security.account.config.AccountMessageConfig.CREDENTIAL_INVALID;
+import static com.security.account.config.AccountMessageConfig.PASSWORD_EXPIRED;
 
 @AllArgsConstructor
 @Service

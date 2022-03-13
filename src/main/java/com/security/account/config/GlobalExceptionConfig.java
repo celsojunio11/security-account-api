@@ -19,7 +19,7 @@ import static org.springframework.http.HttpStatus.*;
 @ControllerAdvice
 @Slf4j
 @PropertySource("classpath:messages.properties")
-public class GlobalExceptionHandler {
+public class GlobalExceptionConfig {
 
     public static final int STR_FIELD_NAME = 0;
 

@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-import static com.security.account.config.AccountMessage.USER_NOT_FOUND;
-import static com.security.account.config.AccountMessage.VALIDATION_EMAIL_ALREADY_EXISTS;
+import static com.security.account.config.AccountMessageConfig.USER_NOT_FOUND;
+import static com.security.account.config.AccountMessageConfig.VALIDATION_EMAIL_ALREADY_EXISTS;
 
 @AllArgsConstructor
 @Service
