@@ -45,9 +45,11 @@ public class AuthService implements UserDetailsService {
     }
 
     public long passwordExpirationDate(String email) {
-        long dayRemaining = ChronoUnit.DAYS.between(userService.getUsername(email).getUpdatedAt(), LocalDate.now().plusDays(5));
+        long dayRemaining = ChronoUnit.DAYS.between(userService.getUsername(email).getUpdatedAt(), LocalDate.now().plusDays(15));
+        long EXPIRATION_DAY = -1;
 
-        if (dayRemaining == -1) {
+        if (dayRemaining == EXPIRATION_DAY) {
+            log.error("[AUTH] - password expired in {} days.", dayRemaining);
             throw new PasswordExpiredException(PASSWORD_EXPIRED);
         }
         return dayRemaining;

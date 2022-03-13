@@ -34,14 +34,13 @@
         "email": "string",
         "password": "string",
         "createdAt": "localDate.now()",
-        "updatedAt": "localDate.now()"
+        "updatedAt": "localDate"
      }
 ```
 
 <br/>
 
-## Endpoint de autenticação 
-- Este endpoint depende que seja enviando os seguintes atributos no cabeçalho `clientId` e `bearerToken`;
+## Endpoint de autenticação
 - Ocorrerá uma validação de usuário e senha;
      - Verificação de validade da senha, e caso esteja próxima do vencimento `D+2`, deve-se retornar uma mensagem informativa ao usuário;
      - Caso esteja vencida `D+1`, não permitir que o usuário realize autenticação.
@@ -49,12 +48,12 @@
 - Campo `message` retornará informação `updatedAt` do banco de dados.
 
 
-### POST /v1/auth/{clientId}
+### POST /v1/auth/
 
 #### Request
 ```json
      {
-        "user": "string",
+        "email": "string",
         "password": "string"
      }
 ```
@@ -62,7 +61,7 @@
 ```json
      {
         "bearerToken": "string",
-        "message": "string"
+        "expireDate": "string"
      }
 ```
 <br/>

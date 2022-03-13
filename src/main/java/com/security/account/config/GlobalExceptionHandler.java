@@ -1,9 +1,6 @@
 package com.security.account.config;
 
-import com.security.account.exceptions.ExceptionResponse;
-import com.security.account.exceptions.PasswordExpiredException;
-import com.security.account.exceptions.UserExistException;
-import com.security.account.exceptions.UserNotFoundException;
+import com.security.account.exceptions.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
@@ -72,4 +69,5 @@ public class GlobalExceptionHandler {
         log.info(exception.getMessage());
         return new ExceptionResponse(env.getProperty(exception.getMessage()));
     }
+
 }
