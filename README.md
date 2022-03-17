@@ -1,7 +1,7 @@
 # security-account-api
 
 ## Endpoint criação de usuário 
-- Deve-se gerar automaticamente o `client-id` que será usado posteriormente para identificar  quem está solicitando a criação de conta;
+- Deve-se gerar automaticamente o `clientId` que será usado posteriormente para identificar  quem está solicitando a criação de conta;
 - Deve-se ocorrer validação de senha pois obrigatoriamente possuirá `caracteres e números`;
 - Deve-se ocorrer a troca de senha periódica `(15 dias)`, e `talvez` avisar por e-mail quando esta troca ocorrer;
 - Deve-se possuir um histórico de senha para que não se permita senhas iguais às anteriores. 
@@ -61,7 +61,7 @@
 ```json
      {
         "bearerToken": "string",
-        "expireDate": "string"
+        "message": "string"
      }
 ```
 <br/>

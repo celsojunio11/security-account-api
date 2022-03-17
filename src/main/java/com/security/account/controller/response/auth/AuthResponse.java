@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AuthResponse {
     private String token;
-    private String expireDate;
+    private String message;
 
     public static AuthResponse fromAuth(String token, long expireDate){
         return new AuthResponse(

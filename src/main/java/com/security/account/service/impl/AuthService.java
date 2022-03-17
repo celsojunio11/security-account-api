@@ -51,7 +51,7 @@ public class AuthService implements UserDetailsService {
 
         if (dayRemaining < EXPIRATION_DAY) {
             log.error("[AUTH] - password expired in {} days.", dayRemaining);
-            throw new PasswordExpiredException(PASSWORD_EXPIRED);
+            throw new PasswordExpiredException(PASSWORD_EXPIRED, dayRemaining);
         }
         return dayRemaining;
     }

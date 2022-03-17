@@ -9,4 +9,5 @@ public class PasswordExpiredException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
     private String message;
+    private long dayExpired;
 }

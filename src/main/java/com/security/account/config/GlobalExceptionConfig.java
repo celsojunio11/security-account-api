@@ -67,7 +67,14 @@ public class GlobalExceptionConfig {
     public @ResponseBody
     ExceptionResponse handlerBusinessRules(PasswordExpiredException exception) {
         log.info(exception.getMessage());
-        return new ExceptionResponse(env.getProperty(exception.getMessage()));
+
+        String MESSAGE_PASSWORD_EXPIRED = env.getProperty(
+                exception.getMessage()) +
+                " em " +
+                Math.abs(exception.getDayExpired()) +
+                " dias, redefina.";
+
+        return new ExceptionResponse(MESSAGE_PASSWORD_EXPIRED);
     }
 
 }
