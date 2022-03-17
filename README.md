@@ -87,7 +87,7 @@
 
 ## Endpoint criação de conta
 - Este endpoint depende que seja enviando os seguintes atributos no cabeçalho `clientId` e `bearerToken`;
-- Ocorre-se a validação permitindo apenas uma conta por `document-number`;
+- Ocorre-se a validação permitindo apenas uma conta por `document-Number`;
 - O valor da conta inicializará com zero, status `ATIVA`, e limites deverão ser de acordo a cada cliente;
 - A conta há possibilidade de ter os seguintes status: `[ATIVA, CANCELADA, BLOQUEADA]`;
 - Será gerado um número para `accountId`, e este não poderá repetir.
