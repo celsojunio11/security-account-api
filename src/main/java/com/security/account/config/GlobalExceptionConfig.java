@@ -77,4 +77,20 @@ public class GlobalExceptionConfig {
         return new ExceptionResponse(MESSAGE_PASSWORD_EXPIRED);
     }
 
+    @ResponseStatus(BAD_REQUEST)
+    @ExceptionHandler({PasswordEqualsException.class})
+    public @ResponseBody
+    ExceptionResponse handlerBusinessRules(PasswordEqualsException exception) {
+        log.info(exception.getMessage());
+        return new ExceptionResponse(env.getProperty(exception.getMessage()));
+    }
+
+    @ResponseStatus(BAD_REQUEST)
+    @ExceptionHandler({PasswordIncorrectException.class})
+    public @ResponseBody
+    ExceptionResponse handlerBusinessRules(PasswordIncorrectException exception) {
+        log.info(exception.getMessage());
+        return new ExceptionResponse(env.getProperty(exception.getMessage()));
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.security.account.entity;
 
+import com.security.account.controller.request.user.ChangePassawordRequest;
 import com.security.account.controller.request.user.UserRequest;
 import com.security.account.repository.UserRepository;
 import lombok.AllArgsConstructor;
@@ -51,6 +52,16 @@ public class User {
                 LocalDate.now(),
                 LocalDate.now())
         );
+    }
+
+    public void updatePassword(
+            ChangePassawordRequest request,
+            UserRepository repository
+    ){
+        this.updatedAt = LocalDate.now();
+        this.password = new BCryptPasswordEncoder().encode(request.getNewPassword());
+
+        repository.save(this);
     }
 
 }
